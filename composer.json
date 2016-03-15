@@ -1,0 +1,24 @@
+{
+  "name": "exts/configured",
+  "description": "Configuration class for loading & saving different types of PHP array data",
+  "license": "MIT",
+  "keywords": ["config", "config loader", "yaml loader", "exts configured", "exts config loader", "exts config"],
+  "authors": [
+    {
+      "name": "Lamonte Harris"
+    }
+  ],
+  "require": {
+    "igorw/get-in": "1.0.*",
+    "symfony/yaml": "2.7.*",
+    "league/flysystem": "1.0.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Exts\\Configured\\": "src"
+    }
+  }
+}
