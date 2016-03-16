@@ -78,4 +78,12 @@ class YAML implements LoaderInterface
     {
         return $this->extension;
     }
+
+    /**
+     * @param $extension
+     */
+    public function setExtension($extension)
+    {
+        $this->extension = $extension;
+    }
 }

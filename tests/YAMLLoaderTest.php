@@ -1,12 +1,19 @@
 <?php
-
 use Exts\Configured\Loader\YAML;
 
-
+/**
+ * Class YAMLLoaderTest
+ */
 class YAMLLoaderTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * @var YAML
+     */
     private $loader;
 
+    /**
+     * YAMLLoaderTest constructor.
+     */
     public function __construct()
     {
         parent::__construct();

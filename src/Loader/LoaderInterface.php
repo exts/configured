@@ -17,4 +17,9 @@ interface LoaderInterface
      * @return mixed
      */
     public function getExtension();
+
+    /**
+     * @param $extension
+     */
+    public function setExtension($extension);
 }
