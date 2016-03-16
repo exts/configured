@@ -3,26 +3,49 @@ namespace Exts\Configured;
 
 use Exts\Configured\Loader\LoaderInterface;
 
+/**
+ * Class ConfigLoader
+ * @package Exts\Configured
+ */
 class ConfigLoader
 {
+    /**
+     * @var LoaderInterface
+     */
     private $loaderInterface;
-    
+
+    /**
+     * ConfigLoader constructor.
+     * @param LoaderInterface $loaderInterface
+     */
     public function __construct(LoaderInterface $loaderInterface)
     {
         $this->fileExtension = $loaderInterface->getExtension();
         $this->loaderInterface = $loaderInterface;
     }
 
+    /**
+     * @param $extension
+     */
     public function setExtension($extension)
     {
         $this->loaderInterface->setExtension($extension);
     }
 
+    /**
+     * @param $path
+     * @return array
+     */
     public function load($path) : array
     {
         return $this->loaderInterface->load($path);
     }
 
+    /**
+     * @param string $data
+     * @param null $default
+     * @return array|null|string
+     */
     public function get(string $data, $default = null)
     {
         if(empty($data)) {
@@ -44,6 +67,10 @@ class ConfigLoader
         return (new ConfigArray($data)) -> get(implode('.', $arrayKeys), $default);
     }
 
+    /**
+     * @param string $file
+     * @return ConfigArray
+     */
     public function getArrayObject(string $file)
     {
         $data = $this->load($file);

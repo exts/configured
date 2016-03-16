@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5985e5e0b5633415caa77abc1efb1ef3",
-    "content-hash": "06e9fedde58d15bdfa8123a1f680e5ca",
+    "hash": "14aa38ee6d2914d0bb2f4ed4a2e0d668",
+    "content-hash": "477bfa7869fcdb7da1ab474aa59ab344",
     "packages": [
         {
             "name": "igorw/get-in",
@@ -762,6 +762,8 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": ">5.6,>=7.0"
+    },
     "platform-dev": []
 }
