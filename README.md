@@ -3,6 +3,10 @@
 This is a library created for loading different types of config files into arrays and being able to easily manage
 the configuration data using either dot notation or directly accessing the array data.
 
+## Installation
+
+`composer require exts/configured:1.*`
+
 ## Example
 ```php
     use Exts\Configured\ConfigLoader;
