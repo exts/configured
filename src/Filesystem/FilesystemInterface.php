@@ -20,6 +20,13 @@ interface FilesystemInterface
     public function exists($path);
 
     /**
+     * @param string $path
+     * @param $content
+     * @return mixed
+     */
+    public function write(string $path, $content);
+
+    /**
      * @return mixed
      */
     public function getDirectory();

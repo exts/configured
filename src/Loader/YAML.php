@@ -5,6 +5,7 @@ use Exts\Configured\Exceptions\LoadFileException;
 use Exts\Configured\Exceptions\ReadFileException;
 use Exts\Configured\Filesystem\FilesystemInterface;
 use Exts\Configured\Filesystem\PHPLeague;
+use Exts\Configured\Filesystem\Traits\Filesystem;
 use Symfony\Component\Yaml\Exception\ParseException;
 use Symfony\Component\Yaml\Parser;
 
@@ -14,10 +15,7 @@ use Symfony\Component\Yaml\Parser;
  */
 class YAML implements LoaderInterface
 {
-    /**
-     * @var FilesystemInterface
-     */
-    protected $filesystemInterface;
+    use Filesystem;
 
     /**
      * @var string
@@ -33,7 +31,7 @@ class YAML implements LoaderInterface
     {
         $filesystem = $filesystemInterface ?? new PHPLeague($directory);
 
-        $this->registerFileSystem($filesystem);
+        $this->registerFilesystem($filesystem);
     }
 
     /**
@@ -61,14 +59,6 @@ class YAML implements LoaderInterface
         } catch(ParseException $e) {
             throw new ReadFileException(sprintf("Unable to parse the YAML string: %s", $e->getMessage()));
         }
-    }
-
-    /**
-     * @param FilesystemInterface $filesystemInterface
-     */
-    public function registerFileSystem(FilesystemInterface $filesystemInterface)
-    {
-        $this->filesystemInterface = $filesystemInterface;
     }
 
     /**

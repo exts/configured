@@ -65,6 +65,22 @@ the configuration data using either dot notation or directly accessing the array
     
 ```
 
+## Saving an `ConfigArray` object using `ConfigStorage` *(since v1.1)*
+
+```php
+    use Exts\Configured\ConfigArray;
+    use Exts\Configured\ConfigStorage;
+    use Exts\Configured\Storage\YAML;
+    
+    $saveFile = 'example.yml';
+    $saveDirectory = __DIR__ . '/config/';
+    
+    $exampleArrayObject = new ConfigArray(['example', 'data']);
+    
+    $exampleStorage = new ConfigStorage(new YAML($saveDirectory));
+    $exampleStorage->store($saveFile, (array) $exampleArrayObject);
+```
+
 ## Custom Loaders
 
 Custom loaders are pretty simple, just create a class that implements the `LoaderInterface` and call it a day :), will

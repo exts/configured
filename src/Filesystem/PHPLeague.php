@@ -48,6 +48,16 @@ class PHPLeague implements FilesystemInterface
     }
 
     /**
+     * @param string $path
+     * @param $content
+     * @return bool
+     */
+    public function write(string $path, $content)
+    {
+        return $this->filesystem->put($path, $content);
+    }
+
+    /**
      * @return string
      */
     public function getDirectory()
