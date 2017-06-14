@@ -1,10 +1,12 @@
 <?php
+
 use Exts\Configured\ConfigArray;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigArrayObjectTest
  */
-class ConfigArrayObjectTest extends PHPUnit_Framework_TestCase
+class ConfigArrayObjectTest extends TestCase
 {
     public function testDotNotationReturnsValue()
     {

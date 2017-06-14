@@ -1,13 +1,15 @@
 <?php
+
 use Exts\Configured\ConfigArray;
 use Exts\Configured\ConfigLoader;
 use Exts\Configured\Loader;
 use Exts\Configured\Storage;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class YAMLStorageTest
  */
-class YAMLStorageTest extends PHPUnit_Framework_TestCase
+class YAMLStorageTest extends TestCase
 {
     /**
      * @var string

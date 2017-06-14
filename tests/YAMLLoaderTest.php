@@ -1,10 +1,12 @@
 <?php
+
 use Exts\Configured\Loader\YAML;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class YAMLLoaderTest
  */
-class YAMLLoaderTest extends PHPUnit_Framework_TestCase
+class YAMLLoaderTest extends TestCase
 {
     /**
      * @var YAML

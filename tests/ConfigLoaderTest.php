@@ -1,11 +1,13 @@
 <?php
+
 use Exts\Configured\ConfigArray;
 use Exts\Configured\Loader\YAML;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConfigLoaderTest
  */
-class ConfigLoaderTest extends PHPUnit_Framework_TestCase
+class ConfigLoaderTest extends TestCase
 {
     /**
      * @var YAML
