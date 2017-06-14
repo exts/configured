@@ -43,13 +43,13 @@ class YAML implements LoaderInterface
     public function load($path)
     {
         $path = !preg_match("#" . preg_quote('.' . $this->extension) . "$#", $path) ? $path . '.' . $this->extension : $path;
-        $filePath = sprintf("%s/%s", rtrim($this->filesystemInterface->getDirectory(), '/'), ltrim($path));
+        $filePath = sprintf("%s/%s", rtrim($this->filesystem->getDirectory(), '/'), ltrim($path));
 
-        if(!$this->filesystemInterface->exists($path)) {
+        if(!$this->filesystem->exists($path)) {
             throw new LoadFileException(sprintf("The file you were trying to load doesn't exist: %s", $filePath));
         }
 
-        $fileContent = $this->filesystemInterface->read($path);
+        $fileContent = $this->filesystem->read($path);
         if(!$fileContent) {
             throw new ReadFileException(sprintf("There was a problem trying to read this file: %s", $filePath));
         }

@@ -41,7 +41,7 @@ class YAML implements StorageInterface
         $parser = new Dumper();
         $yamlParsed = $parser->dump($data, $this->inline);
 
-        return $this->filesystemInterface->write($path, $yamlParsed);
+        return $this->filesystem->write($path, $yamlParsed);
     }
 
     /**
