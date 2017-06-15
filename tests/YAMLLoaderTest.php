@@ -13,6 +13,8 @@ class YAMLLoaderTest extends TestCase
      */
     private $loader;
 
+    private $directory;
+
     /**
      * YAMLLoaderTest constructor.
      */
@@ -20,7 +22,9 @@ class YAMLLoaderTest extends TestCase
     {
         parent::__construct();
 
-        $this->loader = new YAML(__DIR__ . '/configs');
+        $this->directory = __DIR__ . '/configs/';
+
+        $this->loader = new YAML($this->directory);
     }
 
     /**
@@ -51,5 +55,13 @@ class YAMLLoaderTest extends TestCase
         $test = $this->loader->load('test');
 
         $this->assertTrue(is_array($test));
+    }
+
+    public function testLoadedDirectoryPathIsSet()
+    {
+        $expected = $this->directory;
+        $filesystem = $this->loader->getFilesystem();
+
+        $this->assertEquals($expected, $filesystem->getDirectory());
     }
 }

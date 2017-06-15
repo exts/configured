@@ -23,10 +23,10 @@ trait Filesystem
     }
 
     /**
-     * @return mixed
+     * @return FilesystemInterface
      */
     public function getFilesystem()
     {
-        return $this->getFilesystem();
+        return $this->filesystem;
     }
 }
