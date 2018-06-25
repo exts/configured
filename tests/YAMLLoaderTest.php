@@ -64,4 +64,19 @@ class YAMLLoaderTest extends TestCase
 
         $this->assertEquals($expected, $filesystem->getDirectory());
     }
+
+    /**
+     * @expectedException \Exts\Configured\Exceptions\ReadFileException
+     */
+    public function testEmptyConfigFileExpectsException()
+    {
+        $test = $this->loader->load('empty');
+    }
+
+    public function testEmptyConfigFile()
+    {
+        $test = $this->loader->loadOrNull('empty');
+
+        $this->assertTrue(is_null($test));
+    }
 }

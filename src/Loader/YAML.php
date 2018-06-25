@@ -54,10 +54,29 @@ class YAML implements LoaderInterface
             throw new ReadFileException(sprintf("There was a problem trying to read this file: %s", $filePath));
         }
 
+        $fileContent = trim($fileContent);
+        if(empty($fileContent)) {
+            throw new ReadFileException(sprintf("This file is empty: %s", $filePath));
+        }
+
         try {
             return (new Parser) -> parse($fileContent);
         } catch(ParseException $e) {
             throw new ReadFileException(sprintf("Unable to parse the YAML string: %s", $e->getMessage()));
+        }
+    }
+
+    /**
+     * @param $path
+     *
+     * @return mixed|null
+     */
+    public function loadOrNull($path)
+    {
+        try {
+            return $this->load($path);
+        } catch(\Exception $e) {
+            return null;
         }
     }
 
