@@ -34,11 +34,14 @@ class ConfigLoader
 
     /**
      * @param $path
+     *
      * @return array
      */
     public function load($path) : array
     {
-        return $this->loaderInterface->load($path);
+        $result = $this->loaderInterface->loadOrNull($path);
+
+        return is_array($result) ? $result : [];
     }
 
     /**
