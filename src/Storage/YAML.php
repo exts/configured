@@ -47,7 +47,7 @@ class YAML implements StorageInterface
     /**
      * @param int $inline
      */
-    public function setInline(integer $inline)
+    public function setInline(int $inline)
     {
         $this->inline = $inline;
     }

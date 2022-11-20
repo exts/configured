@@ -27,19 +27,15 @@ class YAMLLoaderTest extends TestCase
         $this->loader = new YAML($this->directory);
     }
 
-    /**
-     * @expectedException \Exts\Configured\Exceptions\LoadFileException
-     */
     public function testThrowLoadFileExceptionWhenFileDoesntExist()
     {
+        $this->expectException(\Exts\Configured\Exceptions\LoadFileException::class);
         $this->loader->load('test_doesnt_exist');
     }
 
-    /**
-     * @expectedException \Exts\Configured\Exceptions\ReadFileException
-     */
     public function testThrowReadFileExceptionWhenFileExists()
     {
+        $this->expectException(\Exts\Configured\Exceptions\ReadFileException::class);
         $this->loader->load('test_empty');
     }
 
@@ -65,11 +61,9 @@ class YAMLLoaderTest extends TestCase
         $this->assertEquals($expected, $filesystem->getDirectory());
     }
 
-    /**
-     * @expectedException \Exts\Configured\Exceptions\ReadFileException
-     */
     public function testEmptyConfigFileExpectsException()
     {
+        $this->expectException(\Exts\Configured\Exceptions\ReadFileException::class);
         $test = $this->loader->load('empty');
     }
 
