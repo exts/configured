@@ -5,6 +5,9 @@ use League\Flysystem\Adapter\AbstractAdapter;
 use League\Flysystem\AdapterInterface;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
+use League\Flysystem\FilesystemAdapter;
+use League\Flysystem\FilesystemException;
+use League\Flysystem\Local\LocalFilesystemAdapter;
 
 /**
  * Class PHPLeague
@@ -13,25 +16,32 @@ use League\Flysystem\Filesystem;
 class PHPLeague implements FilesystemInterface
 {
     /**
+     * @var string
+     */
+    protected string $directory;
+
+    /**
      * @var Filesystem
      */
-    protected $filesystem;
+    protected Filesystem $filesystem;
 
     /**
      * PHPLeague constructor.
-     * @param $directory
-     * @param AdapterInterface|null $adapter
+     * @param string $directory
+     * @param FilesystemAdapter|null $adapter
      */
-    public function __construct($directory, AdapterInterface $adapter = null)
+    public function __construct(string $directory, FilesystemAdapter $adapter = null)
     {
-        $filesystemAdapter = $adapter ?? new Local($directory);
-
+        $this->directory = $directory;
+        $filesystemAdapter = $adapter ?? new LocalFilesystemAdapter($this->directory);
         $this->filesystem = new Filesystem($filesystemAdapter);
     }
 
     /**
      * @param $path
-     * @return bool|false|string
+     *
+     * @throws FilesystemException
+     * @return string
      */
     public function read($path)
     {
@@ -40,6 +50,8 @@ class PHPLeague implements FilesystemInterface
 
     /**
      * @param $path
+     *
+     * @throws FilesystemException
      * @return bool
      */
     public function exists($path)
@@ -50,11 +62,13 @@ class PHPLeague implements FilesystemInterface
     /**
      * @param string $path
      * @param $content
-     * @return bool
+     *
+     * @throws FilesystemException
+     * @return void
      */
-    public function write(string $path, $content)
+    public function write(string $path, $content) : void
     {
-        return $this->filesystem->put($path, $content);
+        $this->filesystem->write($path, $content);
     }
 
     /**
@@ -62,9 +76,6 @@ class PHPLeague implements FilesystemInterface
      */
     public function getDirectory()
     {
-        /** @var AbstractAdapter $adapter */
-        $adapter = $this->filesystem->getAdapter();
-
-        return $adapter->getPathPrefix();
+        return $this->directory;
     }
 }
