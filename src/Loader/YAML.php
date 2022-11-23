@@ -23,6 +23,11 @@ class YAML implements LoaderInterface
     protected $extension = 'yml';
 
     /**
+     * @var string|null
+     */
+    protected ?string $exceptionMessage = null;
+
+    /**
      * YAML constructor.
      * @param $directory
      * @param FilesystemInterface|null $filesystemInterface
@@ -76,8 +81,17 @@ class YAML implements LoaderInterface
         try {
             return $this->load($path);
         } catch(\Exception $e) {
+            $this->exceptionMessage = $e->getMessage();
             return null;
         }
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExceptionMessage()
+    {
+        return $this->exceptionMessage;
     }
 
     /**
