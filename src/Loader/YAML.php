@@ -20,7 +20,7 @@ class YAML implements LoaderInterface
     /**
      * @var string
      */
-    protected $extension = 'yml';
+    protected string $extension = 'yml';
 
     /**
      * @var string|null
@@ -40,12 +40,12 @@ class YAML implements LoaderInterface
     }
 
     /**
-     * @param $path
+     * @param string $path
      * @return mixed
      * @throws LoadFileException
      * @throws ReadFileException
      */
-    public function load($path)
+    public function load(string $path) : mixed
     {
         $path = !preg_match("#" . preg_quote('.' . $this->extension) . "$#", $path) ? $path . '.' . $this->extension : $path;
         $filePath = sprintf("%s/%s", rtrim($this->filesystem->getDirectory(), '/'), ltrim($path));
@@ -72,11 +72,11 @@ class YAML implements LoaderInterface
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @return mixed|null
      */
-    public function loadOrNull($path)
+    public function loadOrNull(string $path) : mixed
     {
         try {
             return $this->load($path);
@@ -89,7 +89,7 @@ class YAML implements LoaderInterface
     /**
      * @return string|null
      */
-    public function getExceptionMessage()
+    public function getExceptionMessage() : ?string
     {
         return $this->exceptionMessage;
     }
@@ -97,15 +97,15 @@ class YAML implements LoaderInterface
     /**
      * @return string
      */
-    public function getExtension()
+    public function getExtension() : string
     {
         return $this->extension;
     }
 
     /**
-     * @param $extension
+     * @param string $extension
      */
-    public function setExtension($extension)
+    public function setExtension(string $extension) : void
     {
         $this->extension = $extension;
     }

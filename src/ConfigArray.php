@@ -12,9 +12,9 @@ class ConfigArray extends \ArrayObject
     /**
      * @param string $key
      * @param null $default
-     * @return array|null
+     * @return mixed
      */
-    public function get(string $key, $default = null)
+    public function get(string $key, $default = null) : mixed
     {
         if(empty($key)) {
             return $default;
@@ -38,7 +38,7 @@ class ConfigArray extends \ArrayObject
      * @param $value
      * @return bool
      */
-    public function set(string $key, $value)
+    public function set(string $key, $value) : bool
     {
         if(empty($key)) {
             return false;

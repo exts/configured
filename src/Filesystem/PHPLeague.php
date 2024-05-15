@@ -35,35 +35,35 @@ class PHPLeague implements FilesystemInterface
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws FilesystemException
      * @return string
      */
-    public function read($path)
+    public function read(string $path) : string
     {
         return $this->filesystem->read($path);
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @throws FilesystemException
      * @return bool
      */
-    public function exists($path)
+    public function exists(string $path) : bool
     {
         return $this->filesystem->has($path);
     }
 
     /**
      * @param string $path
-     * @param $content
+     * @param mixed $content
      *
      * @throws FilesystemException
      * @return void
      */
-    public function write(string $path, $content) : void
+    public function write(string $path, mixed $content) : void
     {
         $this->filesystem->write($path, $content);
     }
@@ -71,7 +71,7 @@ class PHPLeague implements FilesystemInterface
     /**
      * @return string
      */
-    public function getDirectory()
+    public function getDirectory() : string
     {
         return $this->directory;
     }

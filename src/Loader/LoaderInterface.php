@@ -9,26 +9,26 @@ namespace Exts\Configured\Loader;
 interface LoaderInterface
 {
     /**
-     * @param $path
+     * @param string $path
      *
      * @return mixed
      */
-    public function load($path);
+    public function load(string $path) : mixed;
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @return mixed|null
      */
-    public function loadOrNull($path);
+    public function loadOrNull(string $path) : mixed;
 
     /**
      * @return mixed
      */
-    public function getExtension();
+    public function getExtension() : string;
 
     /**
-     * @param $extension
+     * @param string $extension
      */
-    public function setExtension($extension);
+    public function setExtension(string $extension) : void;
 }

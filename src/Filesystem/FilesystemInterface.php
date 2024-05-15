@@ -8,26 +8,26 @@ namespace Exts\Configured\Filesystem;
 interface FilesystemInterface
 {
     /**
-     * @param $path
+     * @param string $path
      * @return mixed
      */
-    public function read($path);
-
-    /**
-     * @param $path
-     * @return mixed
-     */
-    public function exists($path);
+    public function read(string $path) : string;
 
     /**
      * @param string $path
-     * @param $content
-     * @return mixed
+     * @return bool
      */
-    public function write(string $path, $content);
+    public function exists(string $path) : bool;
 
     /**
-     * @return mixed
+     * @param string $path
+     * @param mixed $content
+     * @return void
      */
-    public function getDirectory();
+    public function write(string $path, mixed $content) : void;
+
+    /**
+     * @return string
+     */
+    public function getDirectory() : string;
 }

@@ -12,7 +12,7 @@ class ConfigStorage
     /**
      * @var StorageInterface
      */
-    private $storageInterface;
+    private StorageInterface $storageInterface;
 
     /**
      * ConfigStorage constructor.
@@ -25,10 +25,10 @@ class ConfigStorage
 
     /**
      * @param string $file
-     * @param $data
+     * @param mixed $data
      * @return mixed
      */
-    public function store(string $file, $data)
+    public function store(string $file, mixed $data):  mixed
     {
         return $this->storageInterface->store($file, $data);
     }

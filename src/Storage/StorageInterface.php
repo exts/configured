@@ -12,5 +12,5 @@ interface StorageInterface
      * @param array $data
      * @return mixed
      */
-    public function store(string $path, array $data);
+    public function store(string $path, array $data) : mixed;
 }

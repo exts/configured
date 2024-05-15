@@ -12,12 +12,12 @@ trait Filesystem
     /**
      * @var FilesystemInterface
      */
-    protected $filesystem;
+    protected FilesystemInterface $filesystem;
 
     /**
      * @param FilesystemInterface $filesystemInterface
      */
-    public function registerFilesystem(FilesystemInterface $filesystemInterface)
+    public function registerFilesystem(FilesystemInterface $filesystemInterface) : void
     {
         $this->filesystem = $filesystemInterface;
     }
@@ -25,7 +25,7 @@ trait Filesystem
     /**
      * @return FilesystemInterface
      */
-    public function getFilesystem()
+    public function getFilesystem() : FilesystemInterface
     {
         return $this->filesystem;
     }

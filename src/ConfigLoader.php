@@ -9,10 +9,12 @@ use Exts\Configured\Loader\LoaderInterface;
  */
 class ConfigLoader
 {
+    private string $fileExtension;
+
     /**
      * @var LoaderInterface
      */
-    private $loaderInterface;
+    private LoaderInterface $loaderInterface;
 
     /**
      * ConfigLoader constructor.
@@ -25,19 +27,19 @@ class ConfigLoader
     }
 
     /**
-     * @param $extension
+     * @param string $extension
      */
-    public function setExtension($extension)
+    public function setExtension(string $extension) : void
     {
         $this->loaderInterface->setExtension($extension);
     }
 
     /**
-     * @param $path
+     * @param string $path
      *
      * @return array
      */
-    public function load($path) : array
+    public function load(string $path) : array
     {
         $result = $this->loaderInterface->loadOrNull($path);
 
@@ -47,9 +49,9 @@ class ConfigLoader
     /**
      * @param string $data
      * @param null $default
-     * @return array|null|string
+     * @return array|null
      */
-    public function get(string $data, $default = null)
+    public function get(string $data, mixed $default = null) : ?array
     {
         if(empty($data)) {
             return $default;
@@ -74,7 +76,7 @@ class ConfigLoader
      * @param string $file
      * @return ConfigArray
      */
-    public function getArrayObject(string $file)
+    public function getArrayObject(string $file): ConfigArray
     {
         $data = $this->load($file);
 

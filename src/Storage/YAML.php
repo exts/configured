@@ -17,7 +17,7 @@ class YAML implements StorageInterface
     /**
      * @var int
      */
-    private $inline = 3;
+    private int $inline = 3;
 
     /**
      * YAML constructor.
@@ -36,7 +36,7 @@ class YAML implements StorageInterface
      * @param array $data
      * @return mixed
      */
-    public function store(string $path, array $data)
+    public function store(string $path, array $data) : mixed
     {
         $parser = new Dumper();
         $yamlParsed = $parser->dump($data, $this->inline);
@@ -47,7 +47,7 @@ class YAML implements StorageInterface
     /**
      * @param int $inline
      */
-    public function setInline(int $inline)
+    public function setInline(int $inline) : void
     {
         $this->inline = $inline;
     }
