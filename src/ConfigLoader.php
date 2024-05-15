@@ -49,9 +49,9 @@ class ConfigLoader
     /**
      * @param string $data
      * @param null $default
-     * @return array|null
+     * @return mixed
      */
-    public function get(string $data, mixed $default = null) : ?array
+    public function get(string $data, mixed $default = null) : mixed
     {
         if(empty($data)) {
             return $default;
