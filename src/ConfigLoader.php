@@ -9,8 +9,6 @@ use Exts\Configured\Loader\LoaderInterface;
  */
 class ConfigLoader
 {
-    private string $fileExtension;
-
     /**
      * @var LoaderInterface
      */
@@ -22,7 +20,6 @@ class ConfigLoader
      */
     public function __construct(LoaderInterface $loaderInterface)
     {
-        $this->fileExtension = $loaderInterface->getExtension();
         $this->loaderInterface = $loaderInterface;
     }
 
