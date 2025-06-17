@@ -2,6 +2,7 @@
 namespace Exts\Configured;
 
 use function igorw\get_in;
+use function is_string;
 
 /**
  * Class ConfigArray
@@ -30,7 +31,7 @@ class ConfigArray extends \ArrayObject
             }
         }
 
-        return $array ?? $default;
+        return is_null($array) || (is_string($array) && empty($array)) ? $default : $array;
     }
 
     /**
